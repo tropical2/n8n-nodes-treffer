@@ -1,0 +1,151 @@
+{
+	"name": "Find work emails at German companies with Treffer",
+	"nodes": [
+		{
+			"parameters": {},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a01",
+			"name": "When clicking 'Execute workflow'",
+			"type": "n8n-nodes-base.manualTrigger",
+			"typeVersion": 1,
+			"position": [0, 0]
+		},
+		{
+			"parameters": {
+				"jsCode": "// Replace this node with your own source, like Google Sheets or your CRM.\n// Each item needs a name and a company domain or company name.\nreturn [\n  { json: { first_name: 'Max', last_name: 'Mustermann', domain: 'example.com', company_name: '' } },\n  { json: { first_name: 'Erika', last_name: 'Musterfrau', domain: '', company_name: 'Muster Maschinenbau GmbH' } },\n];"
+			},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a02",
+			"name": "Sample contacts",
+			"type": "n8n-nodes-base.code",
+			"typeVersion": 2,
+			"position": [220, 0]
+		},
+		{
+			"parameters": {
+				"firstName": "={{ $json.first_name }}",
+				"lastName": "={{ $json.last_name }}",
+				"domain": "={{ $json.domain }}",
+				"companyName": "={{ $json.company_name }}"
+			},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a03",
+			"name": "Find work email",
+			"type": "n8n-nodes-treffer.treffer",
+			"typeVersion": 1,
+			"position": [440, 0]
+		},
+		{
+			"parameters": {
+				"conditions": {
+					"options": {
+						"caseSensitive": true,
+						"leftValue": "",
+						"typeValidation": "strict",
+						"version": 3
+					},
+					"conditions": [
+						{
+							"id": "4c9b2f0e-7d1a-4e3b-8f6c-2a1b3c4d5e06",
+							"leftValue": "={{ $json.found }}",
+							"rightValue": "",
+							"operator": {
+								"type": "boolean",
+								"operation": "true",
+								"singleValue": true
+							}
+						}
+					],
+					"combinator": "and"
+				},
+				"options": {}
+			},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a04",
+			"name": "Email found?",
+			"type": "n8n-nodes-base.if",
+			"typeVersion": 2.3,
+			"position": [660, 0]
+		},
+		{
+			"parameters": {},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a05",
+			"name": "Use the email",
+			"type": "n8n-nodes-base.noOp",
+			"typeVersion": 1,
+			"position": [880, -100]
+		},
+		{
+			"parameters": {},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a06",
+			"name": "No email found (free)",
+			"type": "n8n-nodes-base.noOp",
+			"typeVersion": 1,
+			"position": [880, 100]
+		},
+		{
+			"parameters": {
+				"content": "## Find work emails at German companies\n\n1. Sign up at [treffer.io](https://treffer.io/accounts/signup/?utm_source=n8n&utm_medium=template), create an API key and add it as a **Treffer API** credential in **Find work email**.\n2. Replace **Sample contacts** with your own source.\n3. Map name and company in **Find work email**. A domain gives the most reliable match.\n\nFound emails cost 1 credit. Misses are free and go to the lower branch.",
+				"height": 300,
+				"width": 420
+			},
+			"id": "6f0a7c1e-3b1d-4d8e-9a51-1c2f3e4d5a07",
+			"name": "Sticky Note",
+			"type": "n8n-nodes-base.stickyNote",
+			"typeVersion": 1,
+			"position": [-60, -340]
+		}
+	],
+	"connections": {
+		"When clicking 'Execute workflow'": {
+			"main": [
+				[
+					{
+						"node": "Sample contacts",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Sample contacts": {
+			"main": [
+				[
+					{
+						"node": "Find work email",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Find work email": {
+			"main": [
+				[
+					{
+						"node": "Email found?",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Email found?": {
+			"main": [
+				[
+					{
+						"node": "Use the email",
+						"type": "main",
+						"index": 0
+					}
+				],
+				[
+					{
+						"node": "No email found (free)",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	},
+	"settings": {
+		"executionOrder": "v1"
+	}
+}

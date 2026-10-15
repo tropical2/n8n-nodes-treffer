@@ -1,0 +1,59 @@
+{
+	"name": "n8n-nodes-treffer",
+	"version": "0.1.0",
+	"description": "Find verified work emails of people at German companies in n8n workflows. Email finder for Germany by Treffer.",
+	"license": "MIT",
+	"homepage": "https://github.com/tropical2/n8n-nodes-treffer#readme",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"treffer",
+		"email finder",
+		"germany",
+		"german",
+		"work email",
+		"b2b",
+		"lead enrichment"
+	],
+	"author": {
+		"name": "Gerrit Sonnabend",
+		"email": "info@treffer.io",
+		"url": "https://treffer.io"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tropical2/n8n-nodes-treffer.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/TrefferApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Treffer/Treffer.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^21.1.0",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

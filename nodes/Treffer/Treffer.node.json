@@ -1,0 +1,36 @@
+{
+	"node": "n8n-nodes-treffer.treffer",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales"],
+	"alias": [
+		"email finder",
+		"find email",
+		"work email",
+		"business email",
+		"B2B email",
+		"email lookup",
+		"email enrichment",
+		"contact enrichment",
+		"lead enrichment",
+		"prospecting",
+		"Germany",
+		"German",
+		"Deutschland",
+		"DACH",
+		"GmbH",
+		"Mittelstand"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://treffer.io/docs/authentication/?utm_source=n8n&utm_medium=integration"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/tropical2/n8n-nodes-treffer?tab=readme-ov-file"
+			}
+		]
+	}
+}
