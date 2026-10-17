@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-treffer",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Find verified work emails of people at German companies in n8n workflows. Email finder for Germany by Treffer.",
 	"license": "MIT",
 	"homepage": "https://github.com/tropical2/n8n-nodes-treffer#readme",
