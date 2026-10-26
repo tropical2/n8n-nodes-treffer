@@ -15,9 +15,9 @@ Find verified work emails of people at German companies, right inside your n8n w
 
 ## Installation
 
-**Self-hosted n8n:** go to **Settings > Community Nodes > Install**, enter `n8n-nodes-treffer` and confirm. See n8n's [community node installation guide](https://docs.n8n.io/integrations/community-nodes/installation/gui-install/).
+The node is verified by n8n and works on n8n Cloud and self-hosted. Search for "Treffer" or "German email finder" in the nodes panel, pick it under **More from the community** and select **Install**. Instance owners and admins can install it, then everyone on the instance can use it. See n8n's [verified node installation guide](https://docs.n8n.io/integrations/community-nodes/installation/verified-install/).
 
-**n8n Cloud:** available once n8n has verified the node. Then search for "Treffer" or "German email finder" in the nodes panel and install it from there.
+**Self-hosted n8n**, alternatively: go to **Settings > Community Nodes > Install**, enter `n8n-nodes-treffer` and confirm.
 
 ## Credentials
 
